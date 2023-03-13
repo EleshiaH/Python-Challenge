@@ -4,7 +4,8 @@ from datetime import date
 
 csvpath=os.path.join(r"PyBank\Resources\budget_data.csv")
 
-print("Financial Analysis")
+ans1="Financial Analysis"+"\n"+"----------------------------"
+print(ans1)
 
 #  The total number of months included in the dataset
 with open(csvpath) as csvfile:
@@ -14,7 +15,8 @@ with open(csvpath) as csvfile:
 
     for row in csvreader:
         totalmonths+=1
-print(f"Total Months: {totalmonths}")
+ans2=(f"Total Months: {totalmonths}")
+print(ans2)
 
 # The net total amount of "Profit/Losses" over the entire period
 with open(csvpath) as csvfile:
@@ -31,7 +33,8 @@ with open(csvpath) as csvfile:
         elif value <0:
             negativebudget+= (value)
         
-print(f"Total: ${positivebudget + negativebudget}")
+ans3=(f"Total: ${positivebudget + negativebudget}")
+print(ans3)
 
 # The changes in "Profit/Losses" over the entire period, and then the average of those changes
 
@@ -76,17 +79,26 @@ with open(csvpath, 'r') as csvfile:
         difference_sum += row
 
 
-    print(f"Average: ${round(difference_sum/len(difference),2)}")
+ans4=(f"Average: ${round(difference_sum/len(difference),2)}")
+print(ans4)
 
 # The greatest increase in profits (date and amount) over the entire period
 maxprofit=(difference.index(max(difference)))+1 #to find the position of the max profit
 # print(mvalue[maxprofit]) to print only the date
 
-print(f"Greatest Increase in Profits: {(mvalue[maxprofit])} (${max(difference)})")
-
+ans5=(f"Greatest Increase in Profits: {(mvalue[maxprofit])} (${max(difference)})")
+print(ans5)
 
 #The greatest decrease in profits (date and amount) over the entire period
 minprofit=(difference.index(min(difference)))+1 #to find the position of the min profit
 # print(mvalue[minprofit]) to print only the date
 
-print(f"Greatest Decrease in Profits: {(mvalue[minprofit])} (${min(difference)})")
+ans6=(f"Greatest Decrease in Profits: {(mvalue[minprofit])} (${min(difference)})")
+print(ans6)
+
+text_file_path=(r'PyBank\Analysis\PyBank.txt')
+analysis_bank= [ans1,'\n',ans2,'\n',ans3,'\n',ans4,'\n',ans5,'\n',ans6]
+
+with open (text_file_path,'w') as file:
+    for line in analysis_bank:
+        file.write(line) 
