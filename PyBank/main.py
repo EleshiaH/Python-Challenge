@@ -38,11 +38,6 @@ print(ans3)
 
 # The changes in "Profit/Losses" over the entire period, and then the average of those changes
 
-# with open(csvpath, 'r') as fh:
-#     m = csv.reader(fh)
-#     for i in m:
-#         print(i)
-
 temp_list = [] # make a list of the rows so that you can iterate
 
 with open(csvpath, 'r') as csvfile:
@@ -78,7 +73,6 @@ with open(csvpath, 'r') as csvfile:
     for row in difference:
         difference_sum += row
 
-
 ans4=(f"Average: ${round(difference_sum/len(difference),2)}")
 print(ans4)
 
@@ -96,6 +90,7 @@ minprofit=(difference.index(min(difference)))+1 #to find the position of the min
 ans6=(f"Greatest Decrease in Profits: {(mvalue[minprofit])} (${min(difference)})")
 print(ans6)
 
+#Write the summary to a text file in the Analysis folder
 text_file_path=(r'PyBank\Analysis\PyBank.txt')
 analysis_bank= [ans1,'\n',ans2,'\n',ans3,'\n',ans4,'\n',ans5,'\n',ans6]
 
